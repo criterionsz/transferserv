@@ -9,6 +9,7 @@ import transfer.service.OrderService;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/order")
@@ -27,7 +28,7 @@ public class OrderController {
     }
 
     @GetMapping("/history")
-    public ConcurrentHashMap<Long,Transfer> getChat() {
-        return orderService.getHistory();
+    public List<Transfer> getChat() {
+        return orderService.getHistory().values().stream().collect(Collectors.toList());
     }
 }
