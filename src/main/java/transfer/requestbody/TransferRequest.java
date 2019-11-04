@@ -11,6 +11,17 @@ public class TransferRequest {
     private String toAccount;
     double amount;
 
+    public TransferRequest(String fromAccount, String toAccount, double amount) {
+        this.fromAccount = fromAccount;
+        this.toAccount = toAccount;
+        this.amount = amount;
+    }
+
+    public TransferRequest(){
+
+    }
+
+
     public String getFromAccount() {
         return fromAccount;
     }

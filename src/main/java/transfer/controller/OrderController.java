@@ -1,6 +1,8 @@
 package transfer.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import transfer.model.Transfer;
 import transfer.requestbody.TransferRequest;
@@ -21,14 +23,13 @@ public class OrderController {
 
 
     @PostMapping("/transfer")
-    public String transferToAcc(@Valid @RequestBody TransferRequest transfer) {
+    public void transferToAcc(@Valid @RequestBody TransferRequest transfer) {
         orderService.insertTransfer(transfer);
-        System.out.println(transfer.getToAccount());
-        return transfer.getToAccount();
+
     }
 
     @GetMapping("/history")
-    public List<Transfer> getChat() {
-        return orderService.getHistory().values().stream().collect(Collectors.toList());
+    public List<Transfer> getHistory() {
+        return orderService.getHistory();
     }
 }
